@@ -9,6 +9,7 @@ import {
 } from "@nestjs/common";
 import { NormativesService } from "./normatives.servise";
 import { CreateNormativeDto } from "./dto/create-normative.dto";
+import { Normative } from "./schemas/normative.schema";
 
 @Controller("normatives")
 export class NormativesController {
@@ -20,8 +21,10 @@ export class NormativesController {
   }
 
   @Get()
-  getAll() {
-    return "work";
+  async getAll(): Promise<Normative[]> {
+    const normatives = await this.normativesService.getAll();
+
+    return normatives;
   }
 
   @Patch()

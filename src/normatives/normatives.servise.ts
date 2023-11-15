@@ -16,7 +16,10 @@ export class NormativesService {
     return normative;
   }
 
-  async getAll() {}
+  async getAll(): Promise<Normative[]> {
+    const normatives = await this.normativeModel.find();
+    return normatives;
+  }
 
   async patch() {}
 
